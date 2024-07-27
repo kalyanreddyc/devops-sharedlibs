@@ -5,6 +5,7 @@ def call(WorkflowScript script) {
         }
     }
 }
+//script.withSonarQubeEnv('Your_SonarQube_Environment_Name') : This is the name you've given your SonarQube configuration in Jenkins's global configuration. Replace it with the actual identifier you have configured.
 // def call() {
 //     if (env.BUILD_TYPE != 'RELEASE') {
 //         // Integrate with SonarQube
