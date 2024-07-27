@@ -1,6 +1,6 @@
 def call() {
     if (env.BUILD_TYPE != 'RELEASE') {
         // Integrate with SonarQube
-        sh "mvn sonar:sonar"
+        sh "mvn sonar:sonar -Dsonar.qualitygate.wait=true"
     }
 }
