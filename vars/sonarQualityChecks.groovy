@@ -1,6 +1,6 @@
 // Use StepContext if appropriate
 def call(org.jenkinsci.plugins.workflow.steps.StepContext context) {
-    context.withSonarQubeEnv('Your_SonarQube_Environment_Name') {
+    context.withSonarQubeEnv('sonar') {
         def buildType = context.get('env').BUILD_TYPE
         if (buildType != 'RELEASE') {
             context.sh("mvn clean verify sonar:sonar -Dsonar.qualitygate.wait=true")
