@@ -1,5 +1,5 @@
 // vars/buildandPublish.groovy
-def call(String phase = 'build') {
+def call(String phase = 'verify') {
     if (phase == 'deploy' && (env.BUILD_TYPE == 'SNAPSHOT' || env.BUILD_TYPE == 'RELEASE')) {
         mvn("clean deploy")
     } else {
