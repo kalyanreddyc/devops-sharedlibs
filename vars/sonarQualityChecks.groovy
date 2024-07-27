@@ -1,19 +1,9 @@
-// Use StepContext if appropriate
-def call(org.jenkinsci.plugins.workflow.steps.StepContext context) {
-    context.withSonarQubeEnv('sonar') {
-        def buildType = context.get('env').BUILD_TYPE
-        if (buildType != 'RELEASE') {
-            context.sh("mvn clean verify sonar:sonar -Dsonar.qualitygate.wait=true")
-        }
+def call() {
+    if (env.BUILD_TYPE != 'RELEASE') {
+        // Integrate with SonarQube
+        sh "mvn sonar:sonar -Dsonar.qualitygate.wait=true"
     }
 }
-//script.withSonarQubeEnv('Your_SonarQube_Environment_Name') : This is the name you've given your SonarQube configuration in Jenkins's global configuration. Replace it with the actual identifier you have configured.
-// def call() {
-//     if (env.BUILD_TYPE != 'RELEASE') {
-//         // Integrate with SonarQube
-//         sh "mvn sonar:sonar -Dsonar.qualitygate.wait=true"
-//     }
-// }
 //***********//
 // Assuming you have 'script' passed into your library function
 // def call(script) {
@@ -44,3 +34,4 @@ def call(org.jenkinsci.plugins.workflow.steps.StepContext context) {
 //         }
 //     }
 // }
+//script.withSonarQubeEnv('Your_SonarQube_Environment_Name') : This is the name you've given your SonarQube configuration in Jenkins's global configuration. Replace it with the actual identifier you have configured.
